@@ -161,6 +161,14 @@ export function renderOrderSummary() {
       const quantityInput = document.querySelector(
         `.js-quantity-input-${productId}`
       );
+
+      const inputValue = quantityInput.value.trim();
+
+      // Blank input check
+      if (inputValue === "") {
+        alert("Quantity cannot be blank");
+        return;
+      }
       const newQuantity = Number(quantityInput.value);
 
       const container = document.querySelector(
