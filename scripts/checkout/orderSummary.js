@@ -67,7 +67,7 @@ export function renderOrderSummary() {
             </span>
             <input class="quantity-input js-quantity-input-${
               matchingProduct.id
-            }">
+            }" data-product-id = ${matchingProduct.id}>
             <span class="save-quantity-link link-primary js-save-link" data-product-id=${
               matchingProduct.id
             }>Save</span>
@@ -208,6 +208,19 @@ export function renderOrderSummary() {
       updateDeliveryOption(productId, Number(deliveryOptionId));
       renderOrderSummary();
       renderPaymentSummary();
+    });
+  });
+
+  document.querySelectorAll(".quantity-input").forEach((input) => {
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const productId = input.dataset.productId; // yaha se direct milega
+        document
+          .querySelector(`.js-save-link[data-product-id="${productId}"]`)
+          .click();
+        renderOrderSummary();
+        renderPaymentSummary();
+      }
     });
   });
 }
