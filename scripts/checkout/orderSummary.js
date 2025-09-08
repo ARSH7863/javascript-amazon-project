@@ -132,11 +132,12 @@ export function renderOrderSummary() {
       const productId = link.dataset.productId;
       removeCart(productId);
 
-      const container = document.querySelector(
-        `.js-cart-item-container-${productId}`
-      );
-      // console.log(container);
-      container.remove();
+      // const container = document.querySelector(
+      //   `.js-cart-item-container-${productId}`
+      // );
+      // // console.log(container);
+      // container.remove();
+      renderOrderSummary();
 
       updateCartQuantity();
       renderPaymentSummary();
@@ -197,6 +198,7 @@ export function renderOrderSummary() {
       quantityLabel.innerHTML = newQuantity;
 
       updateCartQuantity();
+      renderPaymentSummary();
     });
   });
 
