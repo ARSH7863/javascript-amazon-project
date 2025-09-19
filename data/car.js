@@ -1,12 +1,12 @@
 class Car {
-  brand;
-  model;
+  #brand;
+  #model;
   speed = 0;
   isTrunkOpen = false;
 
   constructor(carDetails) {
-    this.brand = carDetails.brand;
-    this.model = carDetails.model;
+    this.#brand = carDetails.brand;
+    this.#model = carDetails.model;
     // this.speed = carDetails.speed;
   }
 
@@ -14,7 +14,9 @@ class Car {
     const trunkStatus = this.isTrunkOpen ? "open" : "closed";
 
     console.log(
-      `Brand: ${this.brand}, Model: ${this.model}, Speed: ${this.speed} km/h, Trunk: ${trunkStatus}`
+      `Brand: ${this.#brand}, Model: ${this.#model}, Speed: ${
+        this.speed
+      } km/h, Trunk: ${trunkStatus}`
     );
   }
 
@@ -47,28 +49,29 @@ class Car {
   }
 }
 
-// class RaceCar extends Car {
-//   acceleration;
+class RaceCar extends Car {
+  acceleration;
 
-//   constructor(carDetails) {
-//     this.acceleration = carDetails.acceleration;
-//   }
-//   go() {
-//     this.speed += 5;
+  constructor(carDetails) {
+    super(carDetails);
+    this.acceleration = carDetails.acceleration;
+  }
+  go() {
+    this.speed += this.acceleration;
 
-//     if (this.speed > 300) {
-//       this.speed = 300;
-//     }
-//   }
+    if (this.speed > 300) {
+      this.speed = 300;
+    }
+  }
 
-//   brake() {
-//     this.speed -= 5;
+  openTrunk() {
+    console.log(`Race Cars do not have a trunk`);
+  }
 
-//     if (this.speed < 0) {
-//       this.speed = 0;
-//     }
-//   }
-// }
+  closeTrunk() {
+    console.log(`Race Cars do not have a trunk`);
+  }
+}
 
 const car1 = new Car({
   brand: "Toyota",
@@ -78,6 +81,12 @@ const car1 = new Car({
 const car2 = new Car({
   brand: "Tesla",
   model: "Model 3",
+});
+
+const raceCar = new RaceCar({
+  brand: "McLaren",
+  model: "F1",
+  acceleration: 20,
 });
 
 console.log(car1);
@@ -97,3 +106,14 @@ car2.go();
 car2.brake();
 car2.openTrunk();
 car2.displayInfo();
+
+raceCar.displayInfo();
+raceCar.go();
+raceCar.go();
+raceCar.go();
+raceCar.displayInfo();
+raceCar.go();
+raceCar.go();
+raceCar.brake();
+raceCar.go();
+raceCar.displayInfo();
