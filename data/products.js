@@ -1,4 +1,3 @@
-import { cart } from "../data/cart.js";
 import { formatCurrency } from "../scripts/utils/money.js";
 
 export function getProduct(productId) {
@@ -13,7 +12,7 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
-class Product {
+export class Product {
   id;
   image;
   name;
@@ -28,7 +27,7 @@ class Product {
     this.priceCents = productDetails.priceCents;
   }
 
-  getStarsURL() {
+  getStarsUrl() {
     return `images/ratings/rating-${this.rating.stars * 10}.png`;
   }
   getPrice() {
@@ -39,7 +38,7 @@ class Product {
   }
 }
 
-class Clothing extends Product {
+export class Clothing extends Product {
   sizeChartLink;
 
   constructor(productDetails) {
@@ -54,20 +53,20 @@ class Clothing extends Product {
   }
 }
 
-class Appliance extends Product {
-  instructionsLinks;
-  warranntyLink;
+export class Appliance extends Product {
+  instructionsLink;
+  warrantyLink;
 
   constructor(productDetails) {
     super(productDetails);
-    this.instructionsLinks = productDetails.instructionsLinks;
-    this.warranntyLink = productDetails.warranntyLink;
+    this.instructionsLink = productDetails.instructionsLink;
+    this.warrantyLink = productDetails.warrantyLink;
   }
 
   extraInfoHTML() {
     return `
-    <a href="${this.instructionsLinks}" target="_blank">Instructions</a>
-    <a href="${this.warranntyLink}" target="_blank">Warranty</a>
+    <a href="${this.instructionsLink}" target="_blank">Instructions</a>
+    <a href="${this.warrantyLink}" target="_blank">Warranty</a>
     `;
   }
 }
@@ -119,8 +118,8 @@ export const products = [
     priceCents: 1899,
     keywords: ["toaster", "kitchen", "appliances"],
     type: "appliance",
-    instructionsLinks: "images/appliance-instructions.png",
-    warranntyLink: "images/appliance-warranty.png",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -256,8 +255,8 @@ export const products = [
     priceCents: 3074,
     keywords: ["water boiler", "appliances", "kitchen"],
     type: "appliance",
-    instructionsLinks: "images/appliance-instructions.png",
-    warranntyLink: "images/appliance-warranty.png",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -527,8 +526,8 @@ export const products = [
     priceCents: 3899,
     keywords: ["mixing bowls", "baking", "cookware", "kitchen"],
     type: "appliance",
-    instructionsLinks: "images/appliance-instructions.png",
-    warranntyLink: "images/appliance-warranty.png",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
   },
   {
     id: "aaa65ef3-8d6f-4eb3-bc9b-a6ea49047d8f",
