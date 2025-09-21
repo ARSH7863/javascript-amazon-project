@@ -54,7 +54,23 @@ class Clothing extends Product {
   }
 }
 
-class Appliance extends Product {}
+class Appliance extends Product {
+  instructionsLinks;
+  warranntyLink;
+
+  constructor(productDetails) {
+    super(productDetails);
+    this.instructionsLinks = productDetails.instructionsLinks;
+    this.warranntyLink = productDetails.warranntyLink;
+  }
+
+  extraInfoHTML() {
+    return `
+    <a href="${this.instructionsLinks}" target="_blank">Instructions</a>
+    <a href="${this.warranntyLink}" target="_blank">Warranty</a>
+    `;
+  }
+}
 
 export const products = [
   {
@@ -102,6 +118,9 @@ export const products = [
     },
     priceCents: 1899,
     keywords: ["toaster", "kitchen", "appliances"],
+    type: "appliance",
+    instructionsLinks: "images/appliance-instructions.png",
+    warranntyLink: "images/appliance-warranty.png",
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -236,6 +255,9 @@ export const products = [
     },
     priceCents: 3074,
     keywords: ["water boiler", "appliances", "kitchen"],
+    type: "appliance",
+    instructionsLinks: "images/appliance-instructions.png",
+    warranntyLink: "images/appliance-warranty.png",
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -504,6 +526,9 @@ export const products = [
     },
     priceCents: 3899,
     keywords: ["mixing bowls", "baking", "cookware", "kitchen"],
+    type: "appliance",
+    instructionsLinks: "images/appliance-instructions.png",
+    warranntyLink: "images/appliance-warranty.png",
   },
   {
     id: "aaa65ef3-8d6f-4eb3-bc9b-a6ea49047d8f",
@@ -552,6 +577,8 @@ export const products = [
 ].map((productDetails) => {
   if (productDetails.type === "clothing") {
     return new Clothing(productDetails);
+  } else if (productDetails.type === "appliance") {
+    return new Appliance(productDetails);
   }
   return new Product(productDetails);
 });
