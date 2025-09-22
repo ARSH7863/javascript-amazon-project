@@ -87,7 +87,9 @@ export function loadProducts(fun) {
     });
     console.log(products);
 
-    fun();
+    if (typeof fun === "function") {
+      fun();
+    }
   });
 
   xhr.open("GET", "https://supersimplebackend.dev/products");
