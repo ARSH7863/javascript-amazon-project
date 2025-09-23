@@ -85,7 +85,8 @@ export function loadProducts(fun) {
       }
       return new Product(productDetails);
     });
-    console.log(products);
+    // console.log(products);
+    console.log(`Load Products`);
 
     if (typeof fun === "function") {
       fun();
