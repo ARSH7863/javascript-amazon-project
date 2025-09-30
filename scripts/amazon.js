@@ -14,7 +14,15 @@ function renderProductsGrid() {
 
   if (search && search.trim() !== "") {
     filteredProducts = products.filter((product) => {
+      let matchingKeyword = false;
+
+      product.keywords.forEach((keyword) => {
+        if (keyword.toLowerCase().includes(search.toLowerCase())) {
+          matchingKeyword = true;
+        }
+      });
       return (
+        matchingKeyword ||
         product.name.toLowerCase().includes(search.toLowerCase()) ||
         (product.description &&
           product.description.toLowerCase().includes(search.toLowerCase()))

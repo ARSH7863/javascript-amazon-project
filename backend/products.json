@@ -45,21 +45,7 @@
     "type": "clothing",
     "sizeChartLink": "images/clothing-size-chart.png"
   },
-  {
-    "id": "54e0eccd-8f36-462b-b68a-8182611d9add",
-    "image": "images/products/black-2-slot-toaster.jpg",
-    "name": "2 Slot Toaster - Black",
-    "rating": {
-      "stars": 5,
-      "count": 2197
-    },
-    "priceCents": 1899,
-    "keywords": [
-      "toaster",
-      "kitchen",
-      "appliances"
-    ]
-  },
+ 
   {
     "id": "3ebe75dc-64d2-4137-8860-1f5a963e534b",
     "image": "images/products/6-piece-white-dinner-plate-set.jpg",
