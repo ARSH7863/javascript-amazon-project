@@ -95,7 +95,23 @@ async function loadPage() {
 
   document.querySelectorAll(".js-buy-again").forEach((button) => {
     button.addEventListener("click", () => {
-      addToCart(button.dataset.productId);
+      const productId = button.dataset.productId;
+      let productDetails;
+
+      orders.forEach((order) => {
+        if (!order.products) return;
+
+        order.products.forEach((p) => {
+          if (p.productId === productId) {
+            productDetails = p;
+          }
+        });
+      });
+
+      const quantity = productDetails ? productDetails.quantity : 1;
+
+      // addToCart(button.dataset.productId);
+      addToCart(productId, quantity);
 
       button.innerHTML = "Added";
 
